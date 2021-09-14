@@ -2,7 +2,6 @@ import React from "react";
 
 // custom components
 import Home from "./pages/Home";
-import Rooms from "./components/Rooms";
 
 // styles
 import "bootstrap/dist/css/bootstrap.min.css";

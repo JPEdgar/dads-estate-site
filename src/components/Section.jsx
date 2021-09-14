@@ -1,20 +1,16 @@
 import React from "react";
 
 // libraries
-import { Image } from "react-bootstrap";
+import { Image, Row } from "react-bootstrap";
 
-// custom
-import { firstFloorSection } from "../constants/RoomsConstants";
-
-export default function Section({ floor, room }) {
-   const swapRoom = () => {
-      switch (room) {
-         case "Garage":
-            return <Image src={firstFloorSection} thumbnail />;
-         default:
-            break;
-      }
-   };
-
-   return <>{swapRoom()}</>;
+export default function Section({ pic }) {
+   return (
+      <Row>
+         <Image
+            src={pic.sectionPicture}
+            thumbnail
+            style={{ height: "150px", width: "auto" }}
+         />
+      </Row>
+   );
 }

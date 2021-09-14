@@ -1,6 +1,5 @@
-
 // rooms images
-import F1_Outline from "../images/locations/Floor1-Outline.jpg";
+// import F1_Outline from "../images/locations/Floor1-Outline.jpg";
 import F1_Garage from "../images/locations/Floor1-Garage.jpg";
 import F1_Entry from "../images/locations/Floor1-Entry.jpg";
 import F1_Kitchen from "../images/locations/Floor1-Kitchen.jpg";
@@ -10,7 +9,7 @@ import F1_Laundry from "../images/locations/Floor1-Laundry.jpg";
 import F1_Office from "../images/locations/Floor1-Office.jpg";
 import F1_Bath from "../images/locations/Floor1-Bathroom.jpg";
 import F1_Stairs from "../images/locations/Floor1-Stairs.jpg";
-import F2_Outline from "../images/locations/Floor2-Outline.jpg";
+// import F2_Outline from "../images/locations/Floor2-Outline.jpg";
 import F2_Hall from "../images/locations/Floor2-Hallway.jpg";
 import F2_MBed from "../images/locations/Floor2-MasterBedroom.jpg";
 import F2_Bath from "../images/locations/Floor2-Bathroom.jpg";
@@ -27,45 +26,45 @@ const month = 9;
 const day = 13;
 const year = 2021;
 
-const roomInfo = (name, picture) => {
-   return { name: name, picture, picture };
+const roomInfo = (name, picture, sectionPictures) => {
+   const sectionPicArr = [];
+   sectionPictures.map((data) => {
+      sectionPicArr.push(sectionInfo(name, data));
+   });
+   return { name: name, picture: picture, sectionPictures: sectionPicArr };
 };
 
-// problem here`
-const section = (room, loc) => {
-   return `${room}_${loc}_${month}_${day}_${year}`;
+const sectionInfo = (room, picture) => {
+   return {
+      sectionPictureId: `${room}_${picture}_${month}_${day}_${year}`,
+      sectionPicture: picture,
+   };
 };
 
-export const firstFloor = {
-   // OUTLINE: roomInfo("Outline", F1_Outline),
-   GARAGE: roomInfo("Garage", F1_Garage),
-   ENTRY: roomInfo("Entry", F1_Entry),
-   KITCHEN: roomInfo("Kitchen", F1_Kitchen),
-   DINING_ROOM: roomInfo("Dining Room", F1_Dining),
-   LIVING_ROOM: roomInfo("Living Room", F1_Living),
-   LAUNDRY: roomInfo("Kitchen Hall/Laundry", F1_Laundry),
-   OFFICE: roomInfo("Downstairs Office", F1_Office),
-   DWN_BATHROOM: roomInfo("Downstairs Bathroom", F1_Bath),
-   STAIRS: roomInfo("Stairs", F1_Stairs),
+const firstFloor = {
+   name: "First Floor",
+   floorData: [
+      roomInfo("Garage", F1_Garage, [test1, test2, test3, test4]),
+      roomInfo("Entry", F1_Entry, [test1, test2, test3, test4]),
+      roomInfo("Kitchen", F1_Kitchen, [test1, test2, test3, test4]),
+      roomInfo("Dining Room", F1_Dining, [test1, test2, test3, test4]),
+      roomInfo("Living Room", F1_Living, [test1, test2, test3, test4]),
+      roomInfo("Kitchen Hall/Laundry", F1_Laundry, [ test1, test2, test3, test4, ]),
+      roomInfo("Downstairs Office", F1_Office, [test1, test2, test3, test4]),
+      roomInfo("Downstairs Bathroom", F1_Bath, [test1, test2, test3, test4]),
+      roomInfo("Stairs", F1_Stairs, [test1, test2, test3, test4]),
+   ],
 };
 
-export const secondFloor = {
-   // OUTLINE: roomInfo("Outline", F2_Outline),
-   UPS_HALL: roomInfo("Upstairs Hallway", F2_Hall),
-   MASTER_BEDROOM: roomInfo("Master Bedroom", F2_MBed),
-   UPS_BATHROOM: roomInfo("Master Bathroom", F2_Bath),
-   GUEST_BEDROOM: roomInfo("Guest Bedroom", F2_Bed),
-   STORAGE: roomInfo("Guest Bedroom Space", F2_Storage),
+const secondFloor = {
+   name: "Second Floor",
+   floorData: [
+      roomInfo("Upstairs Hallway", F2_Hall, [test1, test2, test3, test4]),
+      roomInfo("Master Bedroom", F2_MBed, [test1, test2, test3, test4]),
+      roomInfo("Master Bathroom", F2_Bath, [test1, test2, test3, test4]),
+      roomInfo("Guest Bedroom", F2_Bed, [test1, test2, test3, test4]),
+      roomInfo("Guest Bedroom Space", F2_Storage, [test1, test2, test3, test4]),
+   ],
 };
 
-export const firstFloorSection = {
-   garage: [section("test1", test1), section("test2", test2), section("test3", test3), section("test4", test4)],
-   entry: [section()],
-   kitchen: [section()],
-   diningRoom: [section()],
-   livingRoom: [section()],
-   laundry: [section()],
-   office: [section()],
-   bathroom: [section()],
-   stairs: [section()],
-};
+export const houseData = [firstFloor, secondFloor];
