@@ -15,12 +15,12 @@ export default function NavBar({ user, setUser, setShow, resetUser }) {
    const firstFloorArray = [];
    const secondFloorArray = [];
 
-   for (const [key, value] of Object.entries(firstFloor)) {
-      firstFloorArray.push(value);
-   }
-   for (const [key, value] of Object.entries(secondFloor)) {
-      secondFloorArray.push(value);
-   }
+   // for (const [key, value] of Object.entries(firstFloor)) {
+   //    firstFloorArray.push(value);
+   // }
+   // for (const [key, value] of Object.entries(secondFloor)) {
+   //    secondFloorArray.push(value);
+   // }
 
    return (
       <>
@@ -39,13 +39,13 @@ export default function NavBar({ user, setUser, setShow, resetUser }) {
                <Col>
                   <Nav>
                      <>
-                        {secondFloorArray.map((data) => {
+                        {/* {secondFloorArray.map((data) => {
                            return (
                               <Col xs={2}>
                                  <Nav.Link>{data}</Nav.Link>
                               </Col>
                            );
-                        })}
+                        })} */}
                      </>
                   </Nav>
                </Col>
@@ -53,13 +53,13 @@ export default function NavBar({ user, setUser, setShow, resetUser }) {
                <Col>
                   <Nav>
                      <>
-                        {firstFloorArray.map((data, index) => {
+                        {/* {firstFloorArray.map((data, index) => {
                            return (
                               <Col xs={2}>
                                  <Nav.Link>{data}</Nav.Link>
                               </Col>
                            );
-                        })}
+                        })} */}
                      </>
                   </Nav>
                </Col>
