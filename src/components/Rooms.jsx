@@ -10,14 +10,19 @@ export default function Rooms({ floor }) {
    return (
       <>
          {floor.floorData.map((data) => {
+            console.log(data.roomId)
             return (
                <div key={data.name}>
                   <Row>
-                     <h4>{data.name}</h4>
+                     <h4 id={data.roomId}>{data.name}</h4>
                      <Col xs={8}>
-                        {data.sectionPictures.map((pic) => {
+                        {data.sectionPictures.map((pic, index) => {
                            return (
-                              <Section key={pic.sectionPictureId} pic={pic} />
+                              <Section
+                                 
+                                 key={pic.sectionPictureId}
+                                 pic={pic}
+                              />
                            );
                         })}
                      </Col>
@@ -25,7 +30,7 @@ export default function Rooms({ floor }) {
                         <Image src={data.picture} fluid />
                      </Col>
                   </Row>
-                  <hr />
+                  <hr/>
                </div>
             );
          })}

@@ -14,17 +14,22 @@ const resetUser = () => {
 
 export default function Home() {
    const [user, setUser] = useState(resetUser);
-   const [show, setShow] = useState(false);
+   const [show, setShow] = useState(true);
 
    return (
       <>
          <Login user={user} setUser={setUser} setShow={setShow} show={show} />
-         {/* {user.firstName && user.lastName && user.email && user.phone && ( */}
+         {user.firstName && user.lastName && user.email && user.phone && (
             <Container className=" mt-1">
-               <NavBar user={user} setUser={setUser} setShow={setShow} resetUser={resetUser}/>
+               <NavBar
+                  user={user}
+                  setUser={setUser}
+                  setShow={setShow}
+                  resetUser={resetUser}
+               />
                <Floors />
             </Container>
-         {/* )} */}
+         )}
       </>
    );
 }

@@ -14,6 +14,7 @@ export default function Floors() {
                <div key={floor.name}>
                   <h2 style={{ color: "red" }}>{floor.name}</h2>
                   <Rooms floor={floor} />
+                  <div id="test">...</div>
                </div>
             );
          })}

@@ -26,12 +26,21 @@ const month = 9;
 const day = 13;
 const year = 2021;
 
-const roomInfo = (name, picture, sectionPictures) => {
+const roomInfo = (floor, name, picture, sectionPictures) => {
+   const regExp = (/\s|\W/gm)
+   const tempFloor = name.replace(regExp, "_");
+   
    const sectionPicArr = [];
    sectionPictures.map((data) => {
       sectionPicArr.push(sectionInfo(name, data));
    });
-   return { name: name, picture: picture, sectionPictures: sectionPicArr };
+
+   return {
+      name: name,
+      picture: picture,
+      sectionPictures: sectionPicArr,
+      roomId: floor + tempFloor,
+   };
 };
 
 const sectionInfo = (room, picture) => {
@@ -44,26 +53,36 @@ const sectionInfo = (room, picture) => {
 const firstFloor = {
    name: "First Floor",
    floorData: [
-      roomInfo("Garage", F1_Garage, [test1, test2, test3, test4]),
-      roomInfo("Entry", F1_Entry, [test1, test2, test3, test4]),
-      roomInfo("Kitchen", F1_Kitchen, [test1, test2, test3, test4]),
-      roomInfo("Dining Room", F1_Dining, [test1, test2, test3, test4]),
-      roomInfo("Living Room", F1_Living, [test1, test2, test3, test4]),
-      roomInfo("Kitchen Hall/Laundry", F1_Laundry, [ test1, test2, test3, test4, ]),
-      roomInfo("Downstairs Office", F1_Office, [test1, test2, test3, test4]),
-      roomInfo("Downstairs Bathroom", F1_Bath, [test1, test2, test3, test4]),
-      roomInfo("Stairs", F1_Stairs, [test1, test2, test3, test4]),
+      roomInfo(1, "Garage", F1_Garage, [test1, test2, test3, test4]),
+      roomInfo(1, "Entry", F1_Entry, [test1, test2, test3, test4]),
+      roomInfo(1, "Kitchen", F1_Kitchen, [test1, test2, test3, test4]),
+      roomInfo(1, "Dining Room", F1_Dining, [test1, test2, test3, test4]),
+      roomInfo(1, "Living Room", F1_Living, [test1, test2, test3, test4]),
+      roomInfo(1, "Kitchen Hall/Laundry", F1_Laundry, [
+         test1,
+         test2,
+         test3,
+         test4,
+      ]),
+      roomInfo(1, "Downstairs Office", F1_Office, [test1, test2, test3, test4]),
+      roomInfo(1, "Downstairs Bathroom", F1_Bath, [test1, test2, test3, test4]),
+      roomInfo(1, "Stairs", F1_Stairs, [test1, test2, test3, test4]),
    ],
 };
 
 const secondFloor = {
    name: "Second Floor",
    floorData: [
-      roomInfo("Upstairs Hallway", F2_Hall, [test1, test2, test3, test4]),
-      roomInfo("Master Bedroom", F2_MBed, [test1, test2, test3, test4]),
-      roomInfo("Master Bathroom", F2_Bath, [test1, test2, test3, test4]),
-      roomInfo("Guest Bedroom", F2_Bed, [test1, test2, test3, test4]),
-      roomInfo("Guest Bedroom Space", F2_Storage, [test1, test2, test3, test4]),
+      roomInfo(2, "Upstairs Hallway", F2_Hall, [test1, test2, test3, test4]),
+      roomInfo(2, "Master Bedroom", F2_MBed, [test1, test2, test3, test4]),
+      roomInfo(2, "Master Bathroom", F2_Bath, [test1, test2, test3, test4]),
+      roomInfo(2, "Guest Bedroom", F2_Bed, [test1, test2, test3, test4]),
+      roomInfo(2, "Guest Bedroom Space", F2_Storage, [
+         test1,
+         test2,
+         test3,
+         test4,
+      ]),
    ],
 };
 
