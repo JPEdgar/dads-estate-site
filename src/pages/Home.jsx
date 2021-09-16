@@ -20,7 +20,7 @@ export default function Home() {
       <>
          <Login user={user} setUser={setUser} setShow={setShow} show={show} />
          {user.firstName && user.lastName && user.email && user.phone && (
-            <Container className=" mt-1">
+            <Container className=" mt-1" id="home">
                <NavBar
                   user={user}
                   setUser={setUser}

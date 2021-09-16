@@ -24,7 +24,7 @@ export default function NavBar({ user, setUser, setShow, resetUser }) {
       <>
          <Navbar bg="light" expand="lg" sticky="top">
             <Container>
-               <Navbar.Brand href="#1Kitchen">React-Bootstrap</Navbar.Brand>
+               <Navbar.Brand href="#home">{user.firstName} {user.lastName}</Navbar.Brand>
                <Navbar.Toggle aria-controls="basic-navbar-nav" />
                <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
