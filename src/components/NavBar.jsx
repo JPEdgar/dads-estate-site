@@ -6,8 +6,6 @@ import {
    Navbar,
    NavDropdown,
    Container,
-   Row,
-   Col,
    Button,
 } from "react-bootstrap";
 
@@ -15,20 +13,22 @@ import {
 import { houseData } from "../constants/RoomsConstants";
 
 export default function NavBar({ user, setUser, setShow, resetUser }) {
-   const handleLogout = () => {
-      setUser(resetUser);
-      setShow(true);
-   };
+   // const handleLogout = () => {
+   //    setUser(resetUser);
+   //    setShow(true);
+   // };
 
    return (
       <>
-         <Navbar bg="light" expand="lg" sticky="top">
+         <Navbar bg="light" expand="md" sticky="top">
             <Container>
-               <Navbar.Brand href="#home">{user.firstName} {user.lastName}</Navbar.Brand>
+               <Navbar.Brand href="#home">
+                  {user.firstName} {user.lastName}
+               </Navbar.Brand>
                <Navbar.Toggle aria-controls="basic-navbar-nav" />
                <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="me-auto">
-                     {houseData.map((floor, index) => {
+                     {houseData.map((floor) => {
                         return (
                            <NavDropdown
                               key={floor.name}
@@ -50,6 +50,7 @@ export default function NavBar({ user, setUser, setShow, resetUser }) {
                      })}
                   </Nav>
                </Navbar.Collapse>
+               <Button>Submit Interests</Button>
             </Container>
          </Navbar>
       </>
