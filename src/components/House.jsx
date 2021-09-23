@@ -14,21 +14,7 @@ export default function House() {
    useEffect(() => {
       const interestArr = [];
 
-      houseData.map((floor, floorIndex) => {
-         interestArr.push(FloorInfo(floor.id, floor.name, []));
-         floor.floorData.map((room) => {
-            interestArr[floorIndex].rooms.push(
-               RoomInfo(
-                  room.roomId,
-                  room.name,
-                  room.blueprintPicture,
-                  room.sectionPictures
-               )
-            );
-            return null;
-         });
-         return null;
-      });
+      houseData.map((floor, floorIdx1) => { interestArr.push(FloorInfo(floor.id, floor.name, [])); floor.floorData.map((room) => { interestArr[floorIdx1].rooms.push( RoomInfo( room.roomId, room.name, room.blueprintPicture, room.sectionPictures ) ); return null; }); return null; });
       // console.log("(house.jsx) interestArr = ", interestArr[0].rooms[0]);
       setInterests(interestArr);
    }, []);
@@ -36,11 +22,15 @@ export default function House() {
    return (
       <>
          {interests &&
-            interests.map((floorData) => {
-            //    console.log("(house.jsx) floorData = ", floorData)
+            interests.map((floorData, floorIdx) => {
+               //    console.log("(house.jsx) floorData = ", floorData)
                return (
                   <div key={floorData.floorId}>
-                     <Floor floorData={floorData} />
+                     <Floor
+                        floorIdx={floorIdx}
+                        floorData={floorData}
+                        setInterests={setInterests}
+                     />
                   </div>
                );
             })}

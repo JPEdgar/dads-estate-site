@@ -1,26 +1,33 @@
 import React from "react";
 
 // libraries
-// import { Row } from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 
 // custom components
 import Section from "./Section";
 
-export default function Room({ roomData }) {
-   // console.log("(room.jsx) roomData = ", roomData)
+export default function Room({ floorIdx, roomIdx, roomData, setInterests }) {
+   // console.log("(room.jsx) roomData = ", roomData);
+
    return (
       <>
          <h4>{roomData.roomName}</h4>
-         {roomData.sections &&
-         roomData.sections.map(sectionData => {
-            // console.log("(room.jsx) sectionData = ", sectionData)
-            return (
-               <div key={sectionData.id}>
-                  <Section sectionData={sectionData} />
-               </div>
-            )
-         }) 
-         }
+         <Row>
+            <Col xs={7} lg={8}>
+               {roomData.sections &&
+                  roomData.sections.map((sectionData, sectionIdx) => {
+                     // console.log("(room.jsx) sectionData = ", sectionData)
+                     return (
+                        <div key={sectionData.id}>
+                           <Section floorIdx={floorIdx} roomIdx={roomIdx} sectionIdx={sectionIdx} sectionData={sectionData} setInterests={setInterests} />
+                        </div>
+                     );
+                  })}
+            </Col>
+            <Col xs={5} lg={4}>
+               <Image src={roomData.blueprintPic} fluid />
+            </Col>
+         </Row>
       </>
    );
 }

@@ -1,40 +1,67 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // libraries
 import { Image, Row, Col, Button } from "react-bootstrap";
 
-export default function Section({ sectionData }) {
+// custom components
+import Interest from "./Interest";
+import { InterestInfo } from "./HouseInfo";
+
+export default function Section({
+   floorIdx,
+   roomIdx,
+   sectionIdx,
+   sectionData,
+   setInterests,
+}) {
    // console.log("(section.jsx) sectionData = ", sectionData);
+   const [updateState, setUpdateState] = useState(false);
+
+   useEffect(() => {
+      setUpdateState(false);
+      if (updateState) {
+         setInterests((curr) => {
+            const tempCurr = [...curr];
+            const loc =
+               tempCurr[floorIdx].rooms[roomIdx].sections[sectionIdx].interests;
+
+            // intake -- picId = "", room = "", fName = "", lName = "", email = "", phone = "", desc = ""
+            // return -- id: Math.random() * 1000, room: room, pictureId: picId, firstName: fName, lastName: lName, email: email, phone: phone, description: desc,
+            loc.push(InterestInfo());
+            return curr;
+         });
+      }
+   }, [updateState]);
 
    const addInterest = () => {
-      console.log("add interest");
+      setUpdateState(true);
    };
 
    return (
       <>
-         <Row>
+         <Row className="mt-1">
             <Col>
-               <Image
-                  src={sectionData.pic}
-                  style={{ height: "200px", width: "auto" }}
-                  thumbnail
-               />
+               <Image src={sectionData.pic} style={{ height: "200px", width: "auto" }} thumbnail />
             </Col>
             <Col>
-               {/* <Row> */}
-               {sectionData.interests &&
-                  sectionData.interests.map((interestData) => {
-                     console.log("(section.jsx) interestData =", interestData);
-                     return (
-                        <div>
-                           <></>
-                        </div>
-                     );
-                  })}
+               {sectionData.interests.map((interestData) => {
+                  // console.log("(section.jsx) interestData = ", interestData);
+                  return (
+                     <div key={interestData.id}>
+                        <Interest 
+                           floorIdx={floorIdx} 
+                           roomIdx={roomIdx} 
+                           sectionIdx={sectionIdx} 
+                           interestData={interestData} 
+                           setInterests={setInterests} 
+                        />
+                     </div>
+                  );
+               })}
                <Button onClick={() => addInterest()}>+ Add Interest</Button>
-               {/* </Row> */}
             </Col>
          </Row>
+         <hr />
       </>
    );
 }
