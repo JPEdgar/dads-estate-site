@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Modal, ButtonGroup, Button, Form, Row, Col } from "react-bootstrap";
 import PhoneInput from "react-phone-input-2";
 
-export default function Login({ user, setUser, show, setShow }) {
+export default function Login({ user, setUser, show, setShow, setModType }) {
    const [tempUser, setTempUser] = useState(user);
 
    const storageName = "tempUserInfo";

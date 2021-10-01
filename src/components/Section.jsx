@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 // libraries
-import { Image, Row, Col, Button } from "react-bootstrap";
+import { Image, Row, Col, Button, Modal } from "react-bootstrap";
 
 // custom components
 import Interest from "./Interest";
@@ -12,62 +12,114 @@ export default function Section({
    roomIdx,
    sectionIdx,
    sectionData,
+   interests,
    setInterests,
+   setModType,
+   setModInfo,
+   setShow,
 }) {
    // console.log("(section.jsx) sectionData = ", sectionData);
-   const [updateState, setUpdateState] = useState(false);
+   const [currSec, setCurrSec] = useState(
+      interests[floorIdx].rooms[roomIdx].sections[sectionIdx].interests
+   );
 
    useEffect(() => {
-      setUpdateState(false);
-      if (updateState) {
-         setInterests((curr) => {
-            const tempCurr = [...curr];
-            const loc =
-               tempCurr[floorIdx].rooms[roomIdx].sections[sectionIdx].interests;
+      setInterests((curr) => {
+         const temp = [...curr];
+         temp[floorIdx].rooms[roomIdx].sections[sectionIdx].interests = currSec;
+         return temp;
+      });
+   }, []);
+   useEffect(() => {
+      setInterests((curr) => {
+         /* console.log(curr[floorIdx].rooms[roomIdx].sections[sectionIdx].interests)*/
+         curr[floorIdx].rooms[roomIdx].sections[sectionIdx].interests = currSec;
+         return curr;
+      });
+   }, [currSec]);
 
-            // intake -- picId = "", room = "", fName = "", lName = "", email = "", phone = "", desc = ""
-            // return -- id: Math.random() * 1000, room: room, pictureId: picId, firstName: fName, lastName: lName, email: email, phone: phone, description: desc,
-            loc.push(InterestInfo());
-            return curr;
-         });
-      }
-   }, [updateState]);
+   // const loc = tempCurr[floorIdx].rooms[roomIdx].sections[sectionIdx].interests;
+
+   // InterestInfo() -- details
+   // intake -- (picId = "", room = "", fName = "", lName = "", email = "", phone = "", desc = "")
+   // return -- {id: Math.random() * 1000, room: room, pictureId: picId, firstName: fName, lastName: lName, email: email, phone: phone, description: desc}
 
    const addInterest = () => {
-      setUpdateState(true);
+      setCurrSec((curr) => {
+         const temp = [...curr];
+         temp.push(InterestInfo());
+         return temp;
+      });
+   };
+   const deleteInterest = (id) => {
+      setCurrSec((curr) => curr.filter((currInt) => currInt.id !== id));
+   };
+   const logInterests = () => {
+      console.log(interests[floorIdx].rooms[roomIdx].sections);
+   };
+
+   const handleClose = () => {
+      setShow(false);
+      // setModType(null);
+   };
+   const handleOpen = () => {
+      setShow(true);
+      setModType("Interest");
+      setModInfo((curr) => ({
+         ...curr,
+         floorInfo: floorIdx,
+         roomInfo: roomIdx,
+         sectionInfo: sectionIdx,
+      }));
    };
 
    return (
       <>
          <Row className="mt-1">
             <Col>
-               <Image src={sectionData.pic} style={{ height: "200px", width: "auto" }} thumbnail />
+               <Image
+                  onClick={() => handleOpen()}
+                  src={sectionData.pic}
+                  style={{ height: "200px", width: "auto", cursor: "zoom-in" }}
+                  thumbnail
+               />
             </Col>
             <Col>
-               {sectionData.interests.map((interestData) => {
-                  // console.log("(section.jsx) interestData = ", interestData);
-                  return (
-                     <div key={interestData.id}>
-                        <Interest 
-                           floorIdx={floorIdx} 
-                           roomIdx={roomIdx} 
-                           sectionIdx={sectionIdx} 
-                           interestData={interestData} 
-                           setInterests={setInterests} 
-                        />
-                     </div>
-                  );
-               })}
+               {
+                  // sectionData.intersts.length > 0 &&
+                  // sectionData.interests.map((interestData) => {
+                  currSec.map((interestData, interestIdx) => {
+                     // console.log("(section.jsx) interestData = ", interestData);
+                     return (
+                        <div key={interestData.id}>
+                           <Interest
+                              floorIdx={floorIdx}
+                              roomIdx={roomIdx}
+                              sectionIdx={sectionIdx}
+                              interestIdx={interestIdx}
+                              interestData={interestData}
+                              interests={interests}
+                              setInterests={setInterests}
+                              deleteInterest={deleteInterest}
+                           />
+                        </div>
+                     );
+                  })
+               }
                <Button onClick={() => addInterest()}>+ Add Interest</Button>
+               <Button onClick={() => logInterests()} className="mx-1">
+                  {" "}
+                  Log{" "}
+               </Button>
             </Col>
          </Row>
+
          <hr />
       </>
    );
 }
 
 /*
-
 import React, { useState } from "react";
 
 // libraries

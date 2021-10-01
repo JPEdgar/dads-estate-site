@@ -6,7 +6,16 @@ import { Row, Col, Image } from "react-bootstrap";
 // custom components
 import Section from "./Section";
 
-export default function Room({ floorIdx, roomIdx, roomData, setInterests }) {
+export default function Room({
+   floorIdx,
+   roomIdx,
+   roomData,
+   interests,
+   setInterests,
+   setModType,
+   setModInfo,
+   setShow
+}) {
    // console.log("(room.jsx) roomData = ", roomData);
 
    return (
@@ -19,13 +28,30 @@ export default function Room({ floorIdx, roomIdx, roomData, setInterests }) {
                      // console.log("(room.jsx) sectionData = ", sectionData)
                      return (
                         <div key={sectionData.id}>
-                           <Section floorIdx={floorIdx} roomIdx={roomIdx} sectionIdx={sectionIdx} sectionData={sectionData} setInterests={setInterests} />
+                           <Section
+                              floorIdx={floorIdx}
+                              roomIdx={roomIdx}
+                              sectionIdx={sectionIdx}
+                              sectionData={sectionData}
+                              interests={interests}
+                              setInterests={setInterests}
+                              setModType={setModType}
+                              setModInfo={setModInfo}
+                              setShow={setShow}
+                           />
                         </div>
                      );
                   })}
             </Col>
             <Col xs={5} lg={4}>
-               <Image src={roomData.blueprintPic} fluid />
+               <a
+                  href={roomData.blueprintPic}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ cursor: "zoom-in" }}
+               >
+                  <Image src={roomData.blueprintPic} fluid />
+               </a>
             </Col>
          </Row>
       </>

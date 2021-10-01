@@ -3,22 +3,34 @@ import React from "react";
 // custom components
 import Room from "./Room";
 
-export default function Floor({ floorIdx, floorData, setInterests }) {
+export default function Floor({
+   floorIdx,
+   floorData,
+   interests,
+   setInterests,
+   setModType,
+   setModInfo,
+   setShow
+}) {
    // console.log("(floor.jsx) floorData = ", floorData);
-   
+
    return (
       <>
          <h2>{floorData.floorName}</h2>
+
          {floorData.rooms.map((roomData, roomIdx) => {
             // console.log("(floor.jsx) roomData = ", roomData)
-
             return (
-               <div key={roomData.roomId}>
+               <div key={roomData.roomId} id={roomData.roomId}>
                   <Room
                      floorIdx={floorIdx}
                      roomIdx={roomIdx}
                      roomData={roomData}
+                     interests={interests}
                      setInterests={setInterests}
+                     setModType={setModType}
+                     setModInfo={setModInfo}
+                     setShow={setShow}
                   />
                </div>
             );
