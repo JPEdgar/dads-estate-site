@@ -1,25 +1,29 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 
 // libraries
-import {
-   Nav,
-   Navbar,
-   NavDropdown,
-   Container,
-   Button,
-} from "react-bootstrap";
+import { Nav, Navbar, NavDropdown, Container, Button } from "react-bootstrap";
+
+// custom component
+import SubmitModal from "./SubmitModal";
+import HelpModal from "./HelpModal";
 
 // constants
 import { houseData } from "../constants/RoomsConstants";
 
-export default function NavBar({ user, setUser, setShow, resetUser }) {
-   // const handleLogout = () => {
-   //    setUser(resetUser);
-   //    setShow(true);
-   // };
+// contexts
+import { UserContext } from "../context/UserContext";
+
+export default function NavBar() {
+   const { user } = useContext(UserContext);
+   const [preSub, setPreSub] = useState(false);
+   const [showHelp, setShowHelp] = useState(false);
 
    return (
       <>
+         {preSub && <SubmitModal preSub={preSub} setPreSub={setPreSub} />}
+         {showHelp && (
+            <HelpModal showHelp={showHelp} setShowHelp={setShowHelp} />
+         )}
          <Navbar bg="light" expand="md" sticky="top">
             <Container>
                <Navbar.Brand href="#home">
@@ -50,45 +54,18 @@ export default function NavBar({ user, setUser, setShow, resetUser }) {
                      })}
                   </Nav>
                </Navbar.Collapse>
-               <Button>Submit Interests</Button>
+               <Button
+                  className="mx-2"
+                  variant="warning"
+                  onClick={() => setShowHelp(true)}
+               >
+                  Help
+               </Button>
+               <Button onClick={() => setPreSub((curr) => !curr)}>
+                  Submit Interests
+               </Button>
             </Container>
          </Navbar>
       </>
    );
 }
-
-/* <Navbar bg="light" sticky="top" className="d-block"> */
-
-/* <Row>
-               <div className="d-flex justify-content-between">
-                  <h3>
-                     {user.firstName} {user.lastName}
-                  </h3>
-                  <Button size="sm" onClick={() => handleLogout()}>
-                     Log out
-                  </Button>
-               </div>
-            </Row> */
-
-/* <Row>
-               <Nav>
-                  {houseData.map((floor, index) => {
-                     return (
-                        // <div key={index + floor.name}>
-                        <>
-                           {index < 1 &&
-                              floor.floorData.map((data, index2) => {
-                                 return index2 > 5 ? (
-                                    <Nav.Link>{data.name}</Nav.Link>
-                                 ) : (
-                                    <Nav.Link>{data.name}</Nav.Link>
-                                 );
-                              })}
-                              </>
-                        // </div>
-                     );
-                  })}
-               </Nav>
-            </Row> */
-
-/* </Navbar> */

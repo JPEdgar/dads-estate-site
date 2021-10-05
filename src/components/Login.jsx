@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 // libraries
 import { Modal, ButtonGroup, Button, Form, Row, Col } from "react-bootstrap";
 import PhoneInput from "react-phone-input-2";
 
-export default function Login({ user, setUser, show, setShow, setModType }) {
+// contexts
+import {UserContext} from "../context/UserContext"
+import {ShowContext} from "../context/ShowContext"
+
+export default function Login() {
+   const {user, setUser} = useContext(UserContext)
+   const {show, setShow} = useContext (ShowContext)
    const [tempUser, setTempUser] = useState(user);
 
    const storageName = "tempUserInfo";
@@ -51,12 +57,7 @@ export default function Login({ user, setUser, show, setShow, setModType }) {
                      <Form.Control
                         type="text"
                         placeholder="Enter first name"
-                        onChange={(e) =>
-                           setTempUser({
-                              ...tempUser,
-                              firstName: e.target.value,
-                           })
-                        }
+                        onChange={(e) => setTempUser({ ...tempUser, firstName: e.target.value, }) }
                         value={tempUser.firstName}
                      />
                   </Col>
@@ -65,12 +66,7 @@ export default function Login({ user, setUser, show, setShow, setModType }) {
                      <Form.Control
                         type="text"
                         placeholder="Enter last name"
-                        onChange={(e) =>
-                           setTempUser({
-                              ...tempUser,
-                              lastName: e.target.value,
-                           })
-                        }
+                        onChange={(e) => setTempUser({ ...tempUser, lastName: e.target.value, }) }
                         value={tempUser.lastName}
                      />
                   </Col>
@@ -88,12 +84,10 @@ export default function Login({ user, setUser, show, setShow, setModType }) {
                   <Form.Control
                      type="email"
                      placeholder="Enter email"
-                     onChange={(e) =>
-                        setTempUser({ ...tempUser, email: e.target.value })
-                     }
+                     onChange={(e) => setTempUser({ ...tempUser, email: e.target.value }) }
                      value={tempUser.email}
                   />
-               </Form.Group>
+               </Form.Group> 
             </Modal.Body>
             <Modal.Footer className="justify-content-between">
                {localStorage.getItem(`${storageName}`) && (

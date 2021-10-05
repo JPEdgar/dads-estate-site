@@ -22,8 +22,18 @@ import test2 from "../images/02.jpg";
 import test3 from "../images/03.jpg";
 import test4 from "../images/04.jpg";
 
-const month = 9;
-const day = 13;
+// section images - kitchen (10/4/2021)
+import Kitchen01 from "../images/Kitchen01_10-4-2021.JPG"
+import Kitchen02 from "../images/Kitchen02_10-4-2021.JPG"
+import Kitchen03 from "../images/Kitchen03_10-4-2021.JPG"
+import Kitchen04 from "../images/Kitchen04_10-4-2021.JPG"
+import Kitchen05 from "../images/Kitchen05_10-4-2021.JPG"
+import Kitchen06 from "../images/Kitchen06_10-4-2021.JPG"
+import Kitchen07 from "../images/Kitchen07_10-4-2021.JPG"
+
+
+const month = 10;
+const day = 4;
 const year = 2021;
 
 const roomInfo = (floor, name, blueprintPicture, sectionPictures) => {
@@ -54,15 +64,15 @@ const firstFloor = {
    id: "First_Floor",
    name: "First Floor",
    floorData: [ 
-      roomInfo(1, "Garage", F1_Garage, [test1, test2, test3, test4]),
-      roomInfo(1, "Entry", F1_Entry, [test1, test2, test3, test4]),
-      roomInfo(1, "Kitchen", F1_Kitchen, [test1, test2, test3, test4]),
-      roomInfo(1, "Dining Room", F1_Dining, [test1, test2, test3, test4]),
-      roomInfo(1, "Living Room", F1_Living, [test1, test2, test3, test4]),
-      roomInfo(1, "Kitchen Hall/Laundry", F1_Laundry, [ test1, test2, test3, test4, ]),
-      roomInfo(1, "Downstairs Office", F1_Office, [test1, test2, test3, test4]),
-      roomInfo(1, "Downstairs Bathroom", F1_Bath, [test1, test2, test3, test4]),
-      roomInfo(1, "Stairs", F1_Stairs, [test1, test2, test3, test4]),
+      // roomInfo(1, "Garage", F1_Garage, [test1, test2, test3, test4]),
+      // roomInfo(1, "Entry", F1_Entry, [test1, test2, test3, test4]),
+      roomInfo(1, "Kitchen", F1_Kitchen, [Kitchen01, Kitchen02, Kitchen03, Kitchen04, Kitchen05, Kitchen06, Kitchen07]),
+      // roomInfo(1, "Dining Room", F1_Dining, [test1, test2, test3, test4]),
+      // roomInfo(1, "Living Room", F1_Living, [test1, test2, test3, test4]),
+      // roomInfo(1, "Kitchen Hall/Laundry", F1_Laundry, [ test1, test2, test3, test4, ]),
+      // roomInfo(1, "Downstairs Office", F1_Office, [test1, test2, test3, test4]),
+      // roomInfo(1, "Downstairs Bathroom", F1_Bath, [test1, test2, test3, test4]),
+      // roomInfo(1, "Stairs", F1_Stairs, [test1, test2, test3, test4]),
    ],
 };
 
@@ -71,10 +81,10 @@ const secondFloor = {
    name: "Second Floor",
    floorData: [
       roomInfo(2, "Upstairs Hallway", F2_Hall, [test1, test2, test3, test4]),
-      roomInfo(2, "Master Bedroom", F2_MBed, [test1, test2, test3, test4]),
-      roomInfo(2, "Master Bathroom", F2_Bath, [test1, test2, test3, test4]),
-      roomInfo(2, "Guest Bedroom", F2_Bed, [test1, test2, test3, test4]),
-      roomInfo(2, "Guest Bedroom Space", F2_Storage, [ test1, test2, test3, test4, ]),
+      // roomInfo(2, "Master Bedroom", F2_MBed, [test1, test2, test3, test4]),
+      // roomInfo(2, "Master Bathroom", F2_Bath, [test1, test2, test3, test4]),
+      // roomInfo(2, "Guest Bedroom", F2_Bed, [test1, test2, test3, test4]),
+      // roomInfo(2, "Guest Bedroom Space", F2_Storage, [ test1, test2, test3, test4, ]),
    ],
 };
 
