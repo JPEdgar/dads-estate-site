@@ -9,7 +9,7 @@ import Help from "./Help";
 export default function HelpModal({ showHelp, setShowHelp }) {
    return (
       <div>
-         <Modal show={showHelp} centered size="md">
+         <Modal show={showHelp} centered size="md" onHide={() => setShowHelp(false)}>
             <Modal.Header closeButton>
                <Modal.Title>Help Section</Modal.Title>
             </Modal.Header>

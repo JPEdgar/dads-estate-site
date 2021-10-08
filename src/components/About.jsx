@@ -17,7 +17,7 @@ export default function About() {
                across multiple states, I built this website to allow everyone
                the ability to look around Dad's house to see what they want to
                keep. This can be pictures or any other material items, like his
-               relciners or desk.
+               recliners or desk.
             </p>
             <p>
                <i>
@@ -40,14 +40,14 @@ export default function About() {
                donating to whatever, or even throwing things away. This is due
                to the lack of time I/we have on getting the house ready for...
                whatever we decide after the unfortunate event of dad's passing.
-               Due to the reverse mortgage, we have maybe 6 months when this is
-               no longer dad's primary place of residence. I plan on calling the
-               reverse mortgage place to confirm timelines.
+               Due to the reverse mortgage, we have maybe six months when this
+               is no longer dad's primary place of residence. I plan on calling
+               the reverse mortgage place to confirm timelines.
             </p>
             <p>
                This site was written and is maintained by me. So if there are
                any bugs, problems, questions, if you have any suggestions, or
-               anything in the miscellanious section, please send me a text.
+               anything in the miscellaneous section, please send me a text.
             </p>
          </Row>
       </>

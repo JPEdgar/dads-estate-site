@@ -12,22 +12,22 @@ export default function Help() {
             <p>
                Please enter your first and last name in the appropriate fields,
                and provide a contact phone number and an email address for
-               recipt of interests.
+               receipt of interests.
             </p>
             <p>Clicking "Log in" will save that data on your local machine.</p>
             <h5>Data Storage and Use</h5>
             <p>
                Personal data will only be stored on your machine.{" "}
                <b>
-                  No information will be stored anywhere else or used beyond the
-                  use of the estate.
+                  No information will be stored anywhere else or used beyond use
+                  of the estate.
                </b>
             </p>
             <p>
                If you've already logged on and data is stored, extra buttons
-               will be available to you on the log in window. You can click
-               "Load User" to load previous information, or "Delete User" to
-               remove the data from your system.
+               will be available to you on the log in window. You can click Load
+               User" to load previous information, or "Delete User" to remove
+               the data from your system.
             </p>
             <p>
                <b>Note:</b> This is <i>not</i> a secured log in. I purposely
@@ -57,8 +57,8 @@ export default function Help() {
             </p>
             <p>
                On the right-hand side of each room is a blueprint sketch with
-               the room highlighted. Hopefully that'll help you navigate through
-               the house and get your bearings.
+               the room highlighted. Hopefully, that'll help you navigate
+               through the house and get your bearings.
             </p>
             <p>
                In each room are pictures of different sections in the room.
@@ -71,11 +71,11 @@ export default function Help() {
                to enter some information.
             </p>
             <p>
-               Helpful information would be something like, "Circular magnent on
-               fridge door." There is no need to put any location information
-               (such as floor, room, ect...) in your description. With how I
-               built the website and broke down the house, everything will
-               automatically be stored.
+               Helpful information would be something like, "Circular magnet on
+               the fridge door." There is no need to put any location
+               information such as the floor, room, etc...) in your description.
+               With how built the website and broke down the house, everything
+               will automatically be stored.
             </p>
             <p>
                <b>Please have one item of interest per line.</b>
@@ -94,7 +94,7 @@ export default function Help() {
                you expressed in a modal window.
             </p>
             <p>
-               If you kept your interests clean, you'll see the floor, the room,
+               If you keep your interests clean, you'll see the floor, the room,
                the picture, and the description of your interest in a row-by-row
                layout. You can return to the website to continue browsing by
                clicking "Close" in the top-right of the modal.
@@ -126,12 +126,12 @@ export default function Help() {
                estate. This spreadsheet will have all interests available to
                review. That way, you can see what you've expressed interest in,
                as well as what everyone else has. In addition, everything is
-               open and transperant.
+               open and transparent.
             </p>
             <p>
                <b>There will be exceptions!</b> Dad has some things individually
-               bequeathed, or has wishes/plans for certain items. That means
-               some things won't be available.
+               bequeathed or has wishes/plans for certain items. That means some
+               things won't be available.
             </p>
             <h1>Final Note:</h1>
             <p>

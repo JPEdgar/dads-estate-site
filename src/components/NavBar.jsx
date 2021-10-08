@@ -56,12 +56,12 @@ export default function NavBar() {
                </Navbar.Collapse>
                <Button
                   className="mx-2"
-                  variant="warning"
+                  variant="info"
                   onClick={() => setShowHelp(true)}
                >
                   Help
                </Button>
-               <Button onClick={() => setPreSub((curr) => !curr)}>
+               <Button variant="success" onClick={() => setPreSub((curr) => !curr)}>
                   Submit Interests
                </Button>
             </Container>
