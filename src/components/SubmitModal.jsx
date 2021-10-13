@@ -73,7 +73,7 @@ export default function SubmitModal({ preSub, setPreSub }) {
       emailjs
          .sendForm(serviceId, templateId, e.target, userId)
          .then((res) => {
-            console.log("success!", res.status, res.text);
+            // console.log("success!", res.status, res.text);
             setInterests(InitiateEstateDefault());
             setPreSub(false);
          })
@@ -153,7 +153,7 @@ export default function SubmitModal({ preSub, setPreSub }) {
                            )}
                         </Row>
                         {submitArray.map((data, idx) => {
-                           console.log(data);
+                           // console.log(data);
                            return (
                               <div
                                  key={`${data.floorName} - ${
