@@ -5,11 +5,11 @@ import { Modal, Button, Image, Row, Col, Form } from "react-bootstrap";
 import emailjs from "emailjs-com";
 
 // context
-import { EstateContext } from "../context/EstateContext";
+import { EstateContext, InitiateEstateDefault } from "../context/EstateContext";
 import { UserContext } from "../context/UserContext";
 
 export default function SubmitModal({ preSub, setPreSub }) {
-   const { interests } = useContext(EstateContext);
+   const { interests, setInterests } = useContext(EstateContext);
    const { user } = useContext(UserContext);
 
    const userId = "user_IvQdA112gfEnTOCe2qrOB";
@@ -20,7 +20,7 @@ export default function SubmitModal({ preSub, setPreSub }) {
    const [submitArray, setSubmitArray] = useState([]);
 
    const submitData = (interestsData, roomData, sectionData, intData) => {
-      console.log(intData)
+      console.log(intData);
       const returnVal = {
          floorName: interestsData.floorName,
          roomName: roomData.roomName,
@@ -70,7 +70,16 @@ export default function SubmitModal({ preSub, setPreSub }) {
       e.preventDefault();
       console.log("in submit");
       // console.log(e.target);
-      emailjs .sendForm(serviceId, templateId, e.target, userId) .then((res) => { console.log("success!", res.status, res.text); }) .catch((err) => { console.log("Failed. ", err); });
+      emailjs
+         .sendForm(serviceId, templateId, e.target, userId)
+         .then((res) => {
+            console.log("success!", res.status, res.text);
+            setInterests(InitiateEstateDefault());
+            setPreSub(false);
+         })
+         .catch((err) => {
+            console.log("Failed. ", err);
+         });
    };
 
    const handleClose = () => setPreSub(false);
@@ -144,7 +153,7 @@ export default function SubmitModal({ preSub, setPreSub }) {
                            )}
                         </Row>
                         {submitArray.map((data, idx) => {
-                           console.log(data)
+                           console.log(data);
                            return (
                               <div
                                  key={`${data.floorName} - ${
@@ -173,7 +182,14 @@ export default function SubmitModal({ preSub, setPreSub }) {
                                     name={`interestDescription${idx}`}
                                     readOnly
                                  />
-                                 <input style={{ display: "none" }} className="form-control" type="text" value={data.pic} name={`picInfo${idx}`} readOnly />
+                                 <input
+                                    style={{ display: "none" }}
+                                    className="form-control"
+                                    type="text"
+                                    value={data.pic}
+                                    name={`picInfo${idx}`}
+                                    readOnly
+                                 />
                                  {/* <input style={{ display: "none" }} className="form-control" type="text" value={data.picId} name={`picId${idx}`} readOnly /> */}
                               </div>
                            );
