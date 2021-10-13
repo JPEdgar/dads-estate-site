@@ -40,7 +40,7 @@ export default function About() {
                donating to whatever, or even throwing things away. This is due
                to the lack of time I/we have on getting the house ready for...
                whatever we decide after the unfortunate event of dad's passing.
-               Due to the reverse mortgage, we have maybe six months when this
+               Due to the reverse mortgage, we have anywhere from 30 days to six months when this
                is no longer dad's primary place of residence. I plan on calling
                the reverse mortgage place to confirm timelines.
             </p>
